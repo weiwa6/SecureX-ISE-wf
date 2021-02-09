@@ -16,7 +16,7 @@ I've created this use case with two workflows.
 1. An email account that supports either POP3 or IMAP. A Gmail account is used as an example in this case.
 2. Cisco SecureX Account
 3. Import [0002-Talos-SingleBlogPostToCTRCasebook](https://github.com/CiscoSecurity/sxo-05-security-workflows/tree/Main/Workflows/0002-Talos-SingleBlogPostToCTRCasebook__definition_workflow_01KEM2V2JAIPS3zmyEiCmuy3kvr3wxHrEuJ "0002-Talos-SingleBlogPostToCTRCasebook") from github with all dependencies.
-4. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow)
+4. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow.
 
 ### Installation Steps
 Please follow the below steps exactly to get started!
@@ -41,10 +41,10 @@ Please follow the below steps exactly to get started!
 3. Download [pxgrid-rest-ws](https://github.com/cisco-pxgrid/pxgrid-rest-ws "pxgrid-rest-ws") with [securex_ise.py](https://github.com/weiwa6/SecureX-ISE-wf/blob/main/securex_ise.py "securex_ise.py")
 4. Ngrok (Optional, used to bypass opening firewall ports to expose Flask app)
 5. Create DUO application as ["Partnet Auth API"](https://duo.com/docs/authapi)
-6. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow)
+6. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow.
 
 ### Note
-The python script is intended for PoC only as it does not authenticate the requests. Addtiaional checking such as JWT is recommended for production deployment.
+The python script is intended for PoC only as it does not authenticate the requests. Additional checking such as JWT is recommended for production deployment.
 
 ### Installation Steps
 
