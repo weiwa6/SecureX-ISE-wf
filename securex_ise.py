@@ -35,7 +35,6 @@ if __name__ == '__main__':
 
     while pxgrid.account_activate()['accountState'] != 'ENABLED':
         time.sleep(60)
-
         # lookup for session service
     service_lookup_response = pxgrid.service_lookup('com.cisco.ise.config.anc')
     service = service_lookup_response['services'][0]
