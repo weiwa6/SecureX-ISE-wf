@@ -1,4 +1,5 @@
 # SecureX-ISE-wf
+[![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/weiwa6/SecureX-ISE-wf)
 
 To demostrate the power of Cisco DevNet and SecuerX for threat hunting and incident response,
 I've created this use case with two workflows.
