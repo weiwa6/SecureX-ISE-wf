@@ -12,7 +12,8 @@ I've created this use case with two workflows.
 **Prerequisites:**
 1. An email account that supports either POP3 or IMAP. A Gmail account is used as an example in this case.
 2. Cisco SecureX Account
-3. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow)
+3. Cisco Webex Team Account (Optional, this is used to receive messages from the workflow)
+4. ServiceNow API account to post incident. (Optional, disable the relevant ServiceNow workflow blocks if not used)
 
 ### Installation Steps
 Please follow the below steps exactly to get started!
