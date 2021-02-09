@@ -85,4 +85,5 @@ class Config:
 
 7. Run securex_ise.py
 8. Test the workflow with the SecureX pivit menu
+
 ![](screenshot/ise.png)
