@@ -41,3 +41,28 @@ Please follow the below steps exactly to get started!
 4. Ngrok (Optional, used to bypass opening firewall ports to expose Flask app)
 5. Create DUO application as ["Partnet Auth API"](https://duo.com/docs/authapi)
 6. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow)
+
+
+### Installation Steps
+
+1. find config.py under pxgrid-rest-ws/python and update with your ISE credentials. e.g.
+```python
+class Config:
+    def __init__(self):
+        parser = argparse.ArgumentParser()
+        parser.add_argument(
+            '-a', '--hostname', help='pxGrid controller host name (multiple ok)', action='append', default=["Your ISE node IP address"])
+        parser.add_argument('-n', '--nodename', help='Client node name', default="Your pxGrid Node Name")
+        parser.add_argument('-w', '--password', help='Password (optional)')
+        parser.add_argument('-d', '--description',
+                            help='Description (optional)')
+        parser.add_argument(
+            '-c', '--clientcert', help='Client certificate chain pem filename (optional)', default="Your certificate.pem")
+        parser.add_argument('-k', '--clientkey',
+                            help='Client key filename (optional)', default="Your certificate.key")
+        parser.add_argument('-p', '--clientkeypassword',
+                            help='Client key password (optional)', default="Your certificate password")
+        parser.add_argument('-s', '--servercert',
+                            help='Server certificates pem filename', default="Your pxGrid CA.pem")
+							...
+```
