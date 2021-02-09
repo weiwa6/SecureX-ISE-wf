@@ -14,7 +14,7 @@ I've created this use case with two workflows.
 **Prerequisites:**
 1. An email account that supports either POP3 or IMAP. A Gmail account is used as an example in this case.
 2. Cisco SecureX Account
-3. Import [0002-Talos-SingleBlogPostToCTRCasebook](https://github.com/CiscoSecurity/sxo-05-security-workflows/tree/Main/Workflows/0002-Talos-SingleBlogPostToCTRCasebook__definition_workflow_01KEM2V2JAIPS3zmyEiCmuy3kvr3wxHrEuJ "0002-Talos-SingleBlogPostToCTRCasebook")  from github
+3. Import [0002-Talos-SingleBlogPostToCTRCasebook](https://github.com/CiscoSecurity/sxo-05-security-workflows/tree/Main/Workflows/0002-Talos-SingleBlogPostToCTRCasebook__definition_workflow_01KEM2V2JAIPS3zmyEiCmuy3kvr3wxHrEuJ "0002-Talos-SingleBlogPostToCTRCasebook") from github with all dependencies.
 4. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow)
 
 ### Installation Steps
@@ -24,6 +24,9 @@ Please follow the below steps exactly to get started!
 ![](screenshot/screenshot_1.png)
 
 2. Import ["Check New Talos Blog Email.json"](https://github.com/weiwa6/SecureX-ISE-wf/blob/main/Check%20New%20Talos%20Blog%20Email.json) to SecureX as a new workflow
+
+3. Update the Email trigger. See example from [here](https://ciscosecurity.github.io/sxo-05-security-workflows/workflows/triggers)
+
 ------------
 
 ## Workflow 2 - ISE Quarantine Workflow
