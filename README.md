@@ -34,3 +34,9 @@ Please follow the below steps exactly to get started!
 
 ## Workflow 2 - ISE Quarantine Workflow
 ![](screenshot/workflow2.png)
+**Prerequisites:**
+1. Access to ISE with ANC polices configured
+2. Download [pxgrid-rest-ws](https://github.com/cisco-pxgrid/pxgrid-rest-ws "pxgrid-rest-ws") with [securex_ise.py](https://github.com/weiwa6/SecureX-ISE-wf/blob/main/securex_ise.py "securex_ise.py")
+3. Ngrok (Optional, used to bypass opening firewall ports to expose Flask app)
+4. Prepare ISE pxGrid certificates as per [instruction](https://github.com/cisco-pxgrid/pxgrid-rest-ws/blob/master/python/README.txt "instruction")
+4. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow)
