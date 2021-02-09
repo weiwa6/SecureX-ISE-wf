@@ -17,6 +17,7 @@ To demostrate the power of Cisco DevNet and SecureX, I've created this use case 
 ### Installation Steps
 Please follow the below steps exactly to get started!
 1. Subscribe to Talos Blog feed [email notification](https://www.talosintelligence.com/blog_subscription "email notification")
+
 ![](screenshot/screenshot_1.png)
 
 1. Browse to your SecureX orchestration instance. This will be a different URL depending on the region your account is in: 
