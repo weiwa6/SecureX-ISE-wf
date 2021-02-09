@@ -25,7 +25,7 @@ Please follow the below steps exactly to get started!
 
 2. Import ["Check New Talos Blog Email.json"](https://github.com/weiwa6/SecureX-ISE-wf/blob/main/Check%20New%20Talos%20Blog%20Email.json) to SecureX as a new workflow
 
-3. Update the Email trigger. See example from [here](https://ciscosecurity.github.io/sxo-05-security-workflows/workflows/triggers)
+3. Update the Email trigger. See documents of [email events](https://ciscosecurity.github.io/sxo-05-security-workflows/events/email) and [triggers](https://ciscosecurity.github.io/sxo-05-security-workflows/workflows/triggers)
 
 ------------
 
