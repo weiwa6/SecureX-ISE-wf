@@ -28,7 +28,7 @@ Please follow the below steps exactly to get started!
 3. Update the Email trigger. See documents of [email events](https://ciscosecurity.github.io/sxo-05-security-workflows/events/email) and [triggers](https://ciscosecurity.github.io/sxo-05-security-workflows/workflows/triggers)
 
 4. Send a test email with a Talos blog link and check if the script is triggered.
-(Note it could be any security intelligence source url with a little change of the workflow regex)
+(Note it could be any security intelligence feed url after modifying the workflow regex)
 
 ------------
 
