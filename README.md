@@ -69,10 +69,13 @@ class Config:
 2. Approve pxGrid client in ISE (Only required once)
 3. Import Toggle IP_MAC Quarantine in ISE.json to your SecureX workflow
 4. Make sure "response" is enabled as the category
+![](screenshot/response.png)
 5. Run ngrok on the same computer with securex_ise.py
 ```
 ./ngrok http 5000
 ```
+![](screenshot/ngrok.png)
 6. Update SecureX Ngrok target URL using the output from the command above.
+![](screenshot/ngrok_target.png)
 7. Run securex_ise.py
 8. Test the workflow with the SecureX pivit menu
