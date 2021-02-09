@@ -22,3 +22,8 @@ Please follow the below steps exactly to get started!
 1. Subscribe to Talos Blog feed [email notification](https://www.talosintelligence.com/blog_subscription "email notification")
 
 ![](screenshot/screenshot_1.png)
+
+------------
+
+## Workflow 2 - ISE Quarantine Workflow
+![](screenshot/workflow2.png)
