@@ -39,5 +39,5 @@ Please follow the below steps exactly to get started!
 2. Prepare ISE pxGrid certificates as per [instruction](https://github.com/cisco-pxgrid/pxgrid-rest-ws/blob/master/python/README.txt "instruction")
 3. Download [pxgrid-rest-ws](https://github.com/cisco-pxgrid/pxgrid-rest-ws "pxgrid-rest-ws") with [securex_ise.py](https://github.com/weiwa6/SecureX-ISE-wf/blob/main/securex_ise.py "securex_ise.py")
 4. Ngrok (Optional, used to bypass opening firewall ports to expose Flask app)
-5. Create DUO application as ["Partnet Auth API"](https://duo.com/docs/authapi ""Partnet Auth API"")
+5. Create DUO application as ["Partnet Auth API"](https://duo.com/docs/authapi)
 6. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow)
