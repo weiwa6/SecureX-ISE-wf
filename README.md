@@ -23,6 +23,7 @@ Please follow the below steps exactly to get started!
 
 ![](screenshot/screenshot_1.png)
 
+2. Import ["Check New Talos Blog Email.json"](https://github.com/weiwa6/SecureX-ISE-wf/blob/main/Check%20New%20Talos%20Blog%20Email.json) to SecureX as a new workflow
 ------------
 
 ## Workflow 2 - ISE Quarantine Workflow
