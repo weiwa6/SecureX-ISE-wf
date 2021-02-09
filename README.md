@@ -43,7 +43,7 @@ Please follow the below steps exactly to get started!
 6. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow)
 
 ### Note
-The python script is intended for PoC only and it does not authenticate the requests. Addtiaional checking like JWT is recommended for production deployment.
+The python script is intended for PoC only as it does not authenticate the requests. Addtiaional checking such as JWT is recommended for production deployment.
 
 ### Installation Steps
 
