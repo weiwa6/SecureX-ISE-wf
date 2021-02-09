@@ -45,7 +45,7 @@ Please follow the below steps exactly to get started!
 
 ### Installation Steps
 
-1. find config.py under pxgrid-rest-ws/python and update with your ISE credentials. e.g.
+1. find config.py under pxgrid-rest-ws/python and update ISE credentials. e.g.
 ```python
 class Config:
     def __init__(self):
@@ -66,3 +66,13 @@ class Config:
                             help='Server certificates pem filename', default="Your pxGrid CA.pem")
 							...
 ```
+2. Approve pxGrid client in ISE (Only required once)
+3. Import Toggle IP_MAC Quarantine in ISE.json to your SecureX workflow
+4. Make sure "response" is enabled as the category
+5. Run ngrok on the same computer with securex_ise.py
+```
+./ngrok http 5000
+```
+6. Update SecureX Ngrok target URL using the output from the command above.
+7. Run securex_ise.py
+8. Test the workflow with the SecureX pivit menu
