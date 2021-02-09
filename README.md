@@ -9,18 +9,7 @@ I've created this use case with two workflows.
 ------------
 
 ## Workflow 1 - New Talos Blog Email Workflow
-
-```seq
-Talos->Email: New blog published 
-SecureX-->Email: Check new email.\n every 30 sec 
-Email->SecureX: Read email with blog URL
-SecureX->Talos: Fetch blog HTML page\n and extract IOC
-SecureX->CTR: Enrichment API for each IOC
-CTR->SecureX: Sighting data
-SecureX->SecureX: Create casebook
-SecureX->ServiceNow: Create incident ticket
-SecureX->Webex: Send notification with all the information
-```
+![](screenshot/workflow1.png)
 
 **Prerequisites:**
 1. An email account that supports either POP3 or IMAP. A Gmail account is used as an example in this case.
