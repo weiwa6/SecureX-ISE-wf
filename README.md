@@ -10,7 +10,7 @@ I've created this use case with two workflows.
 
 ## Workflow 1 - New Talos Blog Email Workflow
 **Prerequisites:**
-1. An email account that supports either POP3/IMAP. A Gmail account is used as an example in this case.
+1. An email account that supports either POP3 or IMAP. A Gmail account is used as an example in this case.
 2. Cisco SecureX Account
 3. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow)
 
