@@ -42,6 +42,8 @@ Please follow the below steps exactly to get started!
 5. Create DUO application as ["Partnet Auth API"](https://duo.com/docs/authapi)
 6. Cisco Webex Team Account (Optional), this is used to receive messages from the workflow)
 
+### Note
+The python script is intended for PoC only and it does not authenticate the requests. Addtiaional checking like JWT is recommended for production deployment.
 
 ### Installation Steps
 
