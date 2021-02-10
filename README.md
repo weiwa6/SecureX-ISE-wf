@@ -3,9 +3,15 @@
 
 To demostrate the power of Cisco DevNet and SecuerX for threat hunting and incident response,
 I've created this use case with two workflows.
+
 1. Cisco [Talos Blog](https://blog.talosintelligence.com/ "Talos Blog") email notification, which triggers CTR investigation with the creation of a new casebook and ServiceNow incident ticket. This is based on the [original workflow](https://github.com/CiscoSecurity/sxo-05-security-workflows/tree/Main/Workflows/0001-Talos-GetNewBlogPosts__definition_workflow_01FX7FQDZRDUX1TWgKJwTPBMaOWrgUOld2q "original workflow"), with enhancement to use email trigger instead of cron-like scheduler.
 2. SecureX response workflow, which triggers ISE quarantine/un-quarantine via pxGrid ANC for those targets found from the workflow above.
 
+## What does it do?
+1. The injestion of IoC’s, in this case Talos blog posts trigged by an email alert (but similarly, twitter feeds etc. could also be used)
+2. Searching the environment (or “Sighting”) for evidence of these IoC’s within the organisation
+3. Leveraging a ticket system (in this case Service Now) to create an incident ticket
+4. Enabling quarantining of infected endpoints through SecureX calling ISE. This could be other Cisco or 3rd party Security enforcement solution, e.g. BGP blackhole, FW/IPS ACL etc.
 
 ------------
 
