@@ -1,7 +1,7 @@
 # SecureX-ISE-wf
 [![published](https://static.production.devnetcloud.com/codeexchange/assets/images/devnet-published.svg)](https://developer.cisco.com/codeexchange/github/repo/weiwa6/SecureX-ISE-wf)
 
-To demostrate the power of Cisco DevNet and SecuerX for threat hunting and incident response,
+To demostrate the power of Cisco DevNet and SecureX for threat hunting and incident response,
 I've created this use case with two workflows.
 
 1. Cisco [Talos Blog](https://blog.talosintelligence.com/ "Talos Blog") email notification, which triggers CTR investigation with the creation of a new casebook and ServiceNow incident ticket. This is based on the [original workflow](https://github.com/CiscoSecurity/sxo-05-security-workflows/tree/Main/Workflows/0001-Talos-GetNewBlogPosts__definition_workflow_01FX7FQDZRDUX1TWgKJwTPBMaOWrgUOld2q "original workflow"), with enhancement to use email trigger instead of cron-like scheduler.
