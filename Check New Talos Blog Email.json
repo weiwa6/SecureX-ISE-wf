@@ -48,7 +48,7 @@
         "object_type": "definition_activity"
       },
       {
-        "unique_name": "definition_activity_01M7REIR45E7P48MNdcQCRpXT0cOIou5DdC",
+        "unique_name": "definition_activity_01MJMCMOPSYO01ZK1EKC6e4vTSeTw5YqREF",
         "name": "Match Regex",
         "title": "Extract Talos Blog URL",
         "type": "core.matchregex",
@@ -56,7 +56,7 @@
         "properties": {
           "continue_on_failure": false,
           "display_name": "Extract Talos Blog URL",
-          "input_regex": "<a href=\\\"https://blog\\.talosintelligence.*?>",
+          "input_regex": "(<a.*href=\\\"(http:\\/\\/feedproxy\\.google\\.com\\/~r\\/feedburner\\/Talos\\/~\\d+.*\\.html)\\?.*>)(.*)</a>",
           "input_string": "$trigger.triggerevent_01M7OJ8G5BAM610e5wIBFGLL5wIy4l1Kge2.output.raw_message$",
           "skip_execution": false
         },
@@ -72,7 +72,7 @@
           "continue_on_failure": true,
           "display_name": "For Each Post",
           "skip_execution": false,
-          "source_array": "$activity.definition_activity_01M7REIR45E7P48MNdcQCRpXT0cOIou5DdC.output.matching_strings$"
+          "source_array": "$activity.definition_activity_01MJMCMOPSYO01ZK1EKC6e4vTSeTw5YqREF.output.matching_strings$"
         },
         "object_type": "definition_activity",
         "actions": [
@@ -86,7 +86,7 @@
               "action_timeout": 180,
               "continue_on_failure": false,
               "display_name": "Clean Link URL",
-              "script": "import sys\nurl = sys.argv[1][9:-2]",
+              "script": "import sys, re, requests\nhtml_search = re.search('<a.*href=\\\"(http:\\/\\/feedproxy\\.google\\.com\\/~r\\/feedburner\\/Talos\\/~\\d+.*\\.html)\\?.*>(.*)</a>', sys.argv[1], re.IGNORECASE)\nurl = html_search.group(1)\ntitle = html_search.group(2)\n\nredirect_response = requests.get(url, headers={ 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3' }, allow_redirects=False)\nif not redirect_response.is_redirect:\n    sys.exit(\"Failed to redirect\")\nurl = redirect_response.next.url[:redirect_response.next.url.find('?')]",
               "script_arguments": [
                 "$activity.definition_activity_01M7RZGD95D346CHkli0sHGL6Fl7xIDZl1N.input.source_array[@]$"
               ],
@@ -94,6 +94,11 @@
                 {
                   "script_query": "url",
                   "script_query_name": "url",
+                  "script_query_type": "string"
+                },
+                {
+                  "script_query": "title",
+                  "script_query_name": "title",
                   "script_query_type": "string"
                 }
               ],
@@ -294,32 +299,6 @@
         "base_type": "workflow",
         "variables": [
           {
-            "schema_id": "datatype.date",
-            "properties": {
-              "value": "0001-01-01T00:00:00+00:00",
-              "scope": "local",
-              "name": "CTR Access Token Time",
-              "type": "datatype.date",
-              "is_required": false,
-              "is_invisible": false
-            },
-            "unique_name": "variable_workflow_01GNC31KV01YZ5Dap0foQFbT2sVZcRyI9M8",
-            "object_type": "variable_workflow"
-          },
-          {
-            "schema_id": "datatype.string",
-            "properties": {
-              "value": "",
-              "scope": "local",
-              "name": "Webex Text",
-              "type": "datatype.string",
-              "is_required": false,
-              "is_invisible": false
-            },
-            "unique_name": "variable_workflow_01GNC39JZI2IM7Y6vsbTdIB0ULZiunCi9oD",
-            "object_type": "variable_workflow"
-          },
-          {
             "schema_id": "datatype.secure_string",
             "properties": {
               "value": "",
@@ -334,16 +313,30 @@
             "object_type": "variable_workflow"
           },
           {
-            "schema_id": "datatype.secure_string",
+            "schema_id": "datatype.string",
             "properties": {
               "value": "",
+              "scope": "input",
+              "name": "Blog Post URL",
+              "type": "datatype.string",
+              "description": "The URL of the blog post to investigate",
+              "is_required": true,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01GNC2Q5PQN226WpS2OAKg1ZqL25S1Lrltw",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.date",
+            "properties": {
+              "value": "0001-01-01T00:00:00+00:00",
               "scope": "local",
-              "name": "CTR Access Token",
-              "type": "datatype.secure_string",
+              "name": "CTR Access Token Time",
+              "type": "datatype.date",
               "is_required": false,
               "is_invisible": false
             },
-            "unique_name": "variable_workflow_01GNC2W688P5C1TSTZKf2zJsth2hHp2Blmv",
+            "unique_name": "variable_workflow_01GNC31KV01YZ5Dap0foQFbT2sVZcRyI9M8",
             "object_type": "variable_workflow"
           },
           {
@@ -364,14 +357,13 @@
             "schema_id": "datatype.string",
             "properties": {
               "value": "",
-              "scope": "input",
-              "name": "Blog Post URL",
+              "scope": "local",
+              "name": "Webex Text",
               "type": "datatype.string",
-              "description": "The URL of the blog post to investigate",
-              "is_required": true,
+              "is_required": false,
               "is_invisible": false
             },
-            "unique_name": "variable_workflow_01GNC2Q5PQN226WpS2OAKg1ZqL25S1Lrltw",
+            "unique_name": "variable_workflow_01GNC39JZI2IM7Y6vsbTdIB0ULZiunCi9oD",
             "object_type": "variable_workflow"
           },
           {
@@ -398,6 +390,19 @@
               "is_invisible": false
             },
             "unique_name": "variable_workflow_01GNC36ZWZQQI6SDGlDLrlEdKHNFVBj4IGx",
+            "object_type": "variable_workflow"
+          },
+          {
+            "schema_id": "datatype.secure_string",
+            "properties": {
+              "value": "",
+              "scope": "local",
+              "name": "CTR Access Token",
+              "type": "datatype.secure_string",
+              "is_required": false,
+              "is_invisible": false
+            },
+            "unique_name": "variable_workflow_01GNC2W688P5C1TSTZKf2zJsth2hHp2Blmv",
             "object_type": "variable_workflow"
           }
         ],
@@ -781,6 +786,143 @@
                 },
                 "object_type": "definition_activity",
                 "actions": [
+                  {
+                    "unique_name": "definition_activity_01MCQFA55M5PG5pL2dDrQmxQx7uGs2MGVt7",
+                    "name": "Group",
+                    "title": "Validate CTR token",
+                    "type": "logic.group",
+                    "base_type": "activity",
+                    "properties": {
+                      "continue_on_failure": false,
+                      "display_name": "Validate CTR token",
+                      "skip_execution": false
+                    },
+                    "object_type": "definition_activity",
+                    "actions": [
+                      {
+                        "unique_name": "definition_activity_01MCQI73S3RV404M22QTQ3ig1E99yeqI9XH",
+                        "name": "Format Date",
+                        "title": "Format Date",
+                        "type": "core.format_date",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Format Date",
+                          "format_string": "20060102-150405",
+                          "original_date": "$activity.definition_activity_01GNC5JYXP1XG3flEfPpkFE1w4y9jT2pP0c.output.end_time$",
+                          "skip_execution": false,
+                          "use_custom_format": false
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01MCQFA8TQ2ZZ03LrRvIgLXW2OZfhkPEGUm",
+                        "name": "Calculate Date Time Difference",
+                        "title": "Check token age",
+                        "type": "core.calculate_date_time_difference",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Check token age",
+                          "original_date": "$activity.definition_activity_01MCQI73S3RV404M22QTQ3ig1E99yeqI9XH.output.end_time$",
+                          "skip_execution": false,
+                          "subtract_date": "$workflow.definition_workflow_01GNC0LARBZZO6ask9x1UiioeelmVtNodGt.local.variable_workflow_01GNC31KV01YZ5Dap0foQFbT2sVZcRyI9M8$"
+                        },
+                        "object_type": "definition_activity"
+                      },
+                      {
+                        "unique_name": "definition_activity_01MCQFAAFQNL07DOmeCfsUlnaKJqobRfr1O",
+                        "name": "Condition Block",
+                        "title": "Is it over 9 minutes?",
+                        "type": "logic.if_else",
+                        "base_type": "activity",
+                        "properties": {
+                          "continue_on_failure": false,
+                          "display_name": "Is it over 9 minutes?",
+                          "skip_execution": false
+                        },
+                        "object_type": "definition_activity",
+                        "blocks": [
+                          {
+                            "unique_name": "definition_activity_01MCQFAC0GR857dDWyr4tecnfuBpMYI2j4s",
+                            "name": "Condition Branch",
+                            "title": "Yes",
+                            "type": "logic.condition_block",
+                            "base_type": "activity",
+                            "properties": {
+                              "condition": {
+                                "left_operand": "$activity.definition_activity_01MCQFA8TQ2ZZ03LrRvIgLXW2OZfhkPEGUm.output.total_minutes$",
+                                "operator": "gt",
+                                "right_operand": 9
+                              },
+                              "continue_on_failure": false,
+                              "display_name": "Yes",
+                              "skip_execution": false
+                            },
+                            "object_type": "definition_activity",
+                            "actions": [
+                              {
+                                "unique_name": "definition_activity_01MCQFACN78324cQDNCDtVFSC75tJ6lxzsx",
+                                "name": "Generate a new CTR access token",
+                                "title": "Generate a new CTR access token",
+                                "type": "workflow.atomic_workflow",
+                                "base_type": "subworkflow",
+                                "properties": {
+                                  "continue_on_failure": false,
+                                  "display_name": "Generate a new CTR access token",
+                                  "runtime_user": {
+                                    "target_default": true
+                                  },
+                                  "skip_execution": false,
+                                  "target": {
+                                    "override_workflow_target_group_criteria": true,
+                                    "target_group": {
+                                      "run_on_all_targets": false,
+                                      "use_criteria": {
+                                        "choose_target_using_algorithm": "choose_first_with_matching_criteria",
+                                        "conditions": [
+                                          {
+                                            "left_operand": "$targetgroup.web-service endpoint.input.description$",
+                                            "operator": "eqi",
+                                            "right_operand": "CTR_For_Access_Token"
+                                          }
+                                        ]
+                                      }
+                                    }
+                                  },
+                                  "workflow_id": "definition_workflow_01779LB6MV0P02kvka9TGV5cEam84NrCTy4"
+                                },
+                                "object_type": "definition_activity"
+                              },
+                              {
+                                "unique_name": "definition_activity_01MCQFAFOCYN57VEi4nw7QnyrcxHdN09eSj",
+                                "name": "Set Variables",
+                                "title": "Set local CTR token variables",
+                                "type": "core.set_multiple_variables",
+                                "base_type": "activity",
+                                "properties": {
+                                  "continue_on_failure": false,
+                                  "display_name": "Set local CTR token variables",
+                                  "skip_execution": false,
+                                  "variables_to_update": [
+                                    {
+                                      "variable_to_update": "$workflow.definition_workflow_01GNC0LARBZZO6ask9x1UiioeelmVtNodGt.local.variable_workflow_01GNC2W688P5C1TSTZKf2zJsth2hHp2Blmv$",
+                                      "variable_value_new": "$activity.definition_activity_01MCQFACN78324cQDNCDtVFSC75tJ6lxzsx.output.variable_workflow_01BNOOXA3G6MV1PGAvsfZOKDdMYcE6XS726$"
+                                    },
+                                    {
+                                      "variable_to_update": "$workflow.definition_workflow_01GNC0LARBZZO6ask9x1UiioeelmVtNodGt.local.variable_workflow_01GNC31KV01YZ5Dap0foQFbT2sVZcRyI9M8$",
+                                      "variable_value_new": "$activity.definition_activity_01MCQFACN78324cQDNCDtVFSC75tJ6lxzsx.output.end_time$"
+                                    }
+                                  ]
+                                },
+                                "object_type": "definition_activity"
+                              }
+                            ]
+                          }
+                        ]
+                      }
+                    ]
+                  },
                   {
                     "unique_name": "definition_activity_01GNC5O59UX8L6Kqd8pNiPnwwaMuWgHqfrz",
                     "name": "Check CTR deliberate verdict",
@@ -2047,14 +2189,14 @@
     }
   ],
   "atomic_workflows": [
-    "definition_workflow_01FGYY44YU521254ygN3Le0In0kEHpiPNpf",
-    "definition_workflow_01DS6ELBOO8YR3uFJZju566LqiqR18VlE6r",
-    "definition_workflow_01FHMU6SD5XPL6eRW4zFXqkA1w8jWiQCIBU",
-    "definition_workflow_01J3STRKBDJ7H4DZmPyS7xOkHlrhXKxkH34",
-    "definition_workflow_01C9F1VJ1I5KH26f860hJC5zDSD33548bYS",
-    "definition_workflow_01D6KGWC1QCSN7f2tnHrhIHVeZHLKBZubRz",
     "definition_workflow_01BMYF7PCRLRM3pfYcuM9yYFsKoYBEBO4PK",
+    "definition_workflow_01FGYY44YU521254ygN3Le0In0kEHpiPNpf",
+    "definition_workflow_01D6KGWC1QCSN7f2tnHrhIHVeZHLKBZubRz",
+    "definition_workflow_01FHMU6SD5XPL6eRW4zFXqkA1w8jWiQCIBU",
+    "definition_workflow_01C9F1VJ1I5KH26f860hJC5zDSD33548bYS",
     "definition_workflow_01779LB6MV0P02kvka9TGV5cEam84NrCTy4",
-    "definition_workflow_01C0BYD0GI1KZ0mxScCSxVrfX70zrUdqLlW"
+    "definition_workflow_01C0BYD0GI1KZ0mxScCSxVrfX70zrUdqLlW",
+    "definition_workflow_01J3STRKBDJ7H4DZmPyS7xOkHlrhXKxkH34",
+    "definition_workflow_01DS6ELBOO8YR3uFJZju566LqiqR18VlE6r"
   ]
 }
